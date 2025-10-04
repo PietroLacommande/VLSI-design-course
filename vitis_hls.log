@@ -1,0 +1,55 @@
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/vitis_hls.exe'
+INFO: [HLS 200-10] For user 'Pietr' on host 'desktop-ca0nhpr' (Windows NT_amd64 version 6.2) on Fri Oct 03 22:18:10 -0400 2025
+INFO: [HLS 200-10] In directory 'C:/vivado/LaboA1'
+Sourcing Tcl script 'C:/vivado/LaboA1/fir_prj/solution1/csim.tcl'
+INFO: [HLS 200-1510] Running: source C:/vivado/LaboA1/fir_prj/solution1/csim.tcl
+INFO: [HLS 200-1510] Running: open_project fir_prj 
+INFO: [HLS 200-10] Opening project 'C:/vivado/LaboA1/fir_prj'.
+INFO: [HLS 200-1510] Running: set_top fir 
+INFO: [HLS 200-1510] Running: add_files fir.c 
+INFO: [HLS 200-10] Adding design file 'fir.c' to the project
+INFO: [HLS 200-1510] Running: add_files -tb out.gold.dat -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'out.gold.dat' to the project
+INFO: [HLS 200-1510] Running: add_files -tb fir_test.c -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'fir_test.c' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution 'C:/vivado/LaboA1/fir_prj/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.25ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7k160t-ffv676-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7k160t-ffv676-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_clock_uncertainty 12.5% 
+INFO: [HLS 200-1510] Running: source ./fir_prj/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name fir fir 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+Running Dispatch Server on port: 34293
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../fir.c in debug mode
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'Pietr' on host 'desktop-ca0nhpr' (Windows NT_amd64 version 6.2) on Fri Oct 03 22:18:22 -0400 2025
+INFO: [HLS 200-10] In directory 'C:/vivado/LaboA1/fir_prj/solution1/csim/build'
+WARNING: this target does not support the llvm.stacksave intrinsic.
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+INFO: [HLS 200-112] Total CPU user time: 0 seconds. Total CPU system time: 0 seconds. Total elapsed time: 0.828 seconds; peak allocated memory: 0.000 MB.
+   Generating csim.exe
+@E Simulation failed: SIGSEGV.
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 4.687 seconds; current allocated memory: 0.336 MB.
+4
+    while executing
+"source C:/vivado/LaboA1/fir_prj/solution1/csim.tcl"
+    invoked from within
+"hls::main C:/vivado/LaboA1/fir_prj/solution1/csim.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$newargs"
+    (procedure "hls_proc" line 16)
+    invoked from within
+"hls_proc [info nameofexecutable] $argv"
+INFO: [HLS 200-112] Total CPU user time: 0 seconds. Total CPU system time: 0 seconds. Total elapsed time: 15.881 seconds; peak allocated memory: 107.168 MB.

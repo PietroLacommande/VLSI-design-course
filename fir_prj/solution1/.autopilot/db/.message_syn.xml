@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 10.1 seconds; current allocated memory: 104.777 MB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;fir.c&apos; ..." resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-2371]" key="HLS 207-2371" tag="" content="conflicting types for &apos;readInputFile&apos; (fir.c:50:8)" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 207-70]" key="HLS 207-70" tag="" content="previous declaration is here (fir.c:48:6)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;FILE&apos; (fir.c:51:2)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;fin&apos;; did you mean &apos;fir&apos;? (fir.c:51:8)" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 207-4436]" key="HLS 207-4436" tag="" content="&apos;fir&apos; declared here (./fir.h:54:6)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3776]" key="HLS 207-3776" tag="" content="use of undeclared identifier &apos;fin&apos; (fir.c:53:2)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-3945]" key="HLS 207-3945" tag="" content="implicit declaration of function &apos;fopen&apos; is invalid in C99 (fir.c:53:8)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-3945]" key="HLS 207-3945" tag="" content="implicit declaration of function &apos;fscanf&apos; is invalid in C99 (fir.c:56:3)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-4912]" key="HLS 207-4912" tag="" content="declaration of built-in function &apos;fscanf&apos; requires inclusion of the header &lt;stdio.h&gt; (fir.c:56:3)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;fin&apos;; did you mean &apos;fir&apos;? (fir.c:56:10)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-4855]" key="HLS 207-4855" tag="" content="format specifies type &apos;float *&apos; but the argument has type &apos;double&apos; (fir.c:56:21)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-3945]" key="HLS 207-3945" tag="" content="implicit declaration of function &apos;fclosef&apos; is invalid in C99 (fir.c:58:2)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3777]" key="HLS 207-3777" tag="" content="use of undeclared identifier &apos;fin&apos;; did you mean &apos;fir&apos;? (fir.c:58:10)" resolution=""/>
+	<Message severity="WARNING" prefix="[HLS 207-5147]" key="HLS 207-5147" tag="" content="address of stack memory associated with local variable &apos;table&apos; returned (fir.c:60:9)" resolution=""/>
+	<Message severity="ERROR" prefix="[HLS 207-3682]" key="HLS 207-3682" tag="" content="too many arguments to function call, expected single argument &apos;filepath&apos;, have 2 arguments (fir.c:67:32)" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 207-4126]" key="HLS 207-4126" tag="" content="&apos;readInputFile&apos; declared here (fir.c:48:1)" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csynth_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.892 seconds; current allocated memory: 0.422 MB." resolution=""/>
+</Messages>

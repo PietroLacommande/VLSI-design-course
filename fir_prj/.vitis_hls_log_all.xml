@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog>
+        <logs message="ERROR: [HLS 207-3682] too many arguments to function call, expected single argument 'filepath', have 2 arguments (fir.c:67:32)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.628-0400"/>
+        <logs message="ERROR: [HLS 207-3777] use of undeclared identifier 'fin'; did you mean 'fir'? (fir.c:58:10)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.596-0400"/>
+        <logs message="ERROR: [HLS 207-3777] use of undeclared identifier 'fin'; did you mean 'fir'? (fir.c:56:10)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.558-0400"/>
+        <logs message="ERROR: [HLS 207-3776] use of undeclared identifier 'fin' (fir.c:53:2)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.455-0400"/>
+      </synLog>
+      <csimLog>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:18:25.887-0400"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:17:02.784-0400"/>
+        <logs message="ERROR: [APCC 202-1] APCC failed." projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:17:02.764-0400"/>
+        <logs message="ERROR: [APCC 202-1] ProcessSources failed" projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:17:02.720-0400"/>
+        <logs message="ERROR: [APCC 202-10] clang compile failed: child process exited abnormally" projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:17:02.688-0400"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: nonzero return value." projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:56:21.655-0400"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:55:31.295-0400"/>
+        <logs message="ERROR: [APCC 202-1] APCC failed." projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:55:31.267-0400"/>
+        <logs message="ERROR: [APCC 202-1] ProcessSources failed" projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:55:31.249-0400"/>
+        <logs message="ERROR: [APCC 202-10] clang compile failed: child process exited abnormally" projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:55:31.236-0400"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:54:49.640-0400"/>
+        <logs message="ERROR: [APCC 202-1] APCC failed." projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:54:49.611-0400"/>
+        <logs message="ERROR: [APCC 202-1] ProcessSources failed" projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:54:49.589-0400"/>
+        <logs message="ERROR: [APCC 202-10] clang compile failed: child process exited abnormally" projectName="fir_prj" solutionName="solution1" date="2025-10-02T20:54:49.569-0400"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:27:55.835-0400"/>
+        <logs message="ERROR: [APCC 202-1] APCC failed." projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:27:55.787-0400"/>
+        <logs message="ERROR: [APCC 202-1] ProcessSources failed" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:27:55.778-0400"/>
+        <logs message="ERROR: [APCC 202-10] clang compile failed: child process exited abnormally" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:27:55.755-0400"/>
+      </csimLog>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [HLS 207-5147] address of stack memory associated with local variable 'table' returned (fir.c:60:9)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.612-0400" type="Warning"/>
+        <logs message="WARNING: [HLS 207-3945] implicit declaration of function 'fclosef' is invalid in C99 (fir.c:58:2)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.581-0400" type="Warning"/>
+        <logs message="WARNING: [HLS 207-4855] format specifies type 'float *' but the argument has type 'double' (fir.c:56:21)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.565-0400" type="Warning"/>
+        <logs message="WARNING: [HLS 207-4912] declaration of built-in function 'fscanf' requires inclusion of the header &lt;stdio.h> (fir.c:56:3)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.533-0400" type="Warning"/>
+        <logs message="WARNING: [HLS 207-3945] implicit declaration of function 'fscanf' is invalid in C99 (fir.c:56:3)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.518-0400" type="Warning"/>
+        <logs message="WARNING: [HLS 207-3945] implicit declaration of function 'fopen' is invalid in C99 (fir.c:53:8)" projectName="fir_prj" solutionName="solution1" date="2025-10-02T14:23:05.502-0400" type="Warning"/>
+      </synLog>
+      <csimLog>
+        <logs message="WARNING: this target does not support the llvm.stacksave intrinsic." projectName="fir_prj" solutionName="solution1" date="2025-10-03T22:18:25.712-0400" type="Warning"/>
+      </csimLog>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

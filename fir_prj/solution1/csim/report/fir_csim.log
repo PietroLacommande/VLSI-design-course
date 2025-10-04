@@ -1,0 +1,13 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../fir.c in debug mode
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'Pietr' on host 'desktop-ca0nhpr' (Windows NT_amd64 version 6.2) on Fri Oct 03 22:18:22 -0400 2025
+INFO: [HLS 200-10] In directory 'C:/vivado/LaboA1/fir_prj/solution1/csim/build'
+WARNING: this target does not support the llvm.stacksave intrinsic.
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+INFO: [HLS 200-112] Total CPU user time: 0 seconds. Total CPU system time: 0 seconds. Total elapsed time: 0.828 seconds; peak allocated memory: 0.000 MB.
+   Generating csim.exe
+ERR: [SIM 100] CSim failed with errors.
+INFO: [SIM 3] *************** CSIM finish ***************
