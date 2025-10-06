@@ -1,6 +1,0 @@
-INFO: [HLS 200-10] Running 'C:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/apcc.exe'
-INFO: [HLS 200-10] For user 'Pietr' on host 'desktop-ca0nhpr' (Windows NT_amd64 version 6.2) on Sun Oct 05 23:02:24 -0400 2025
-INFO: [HLS 200-10] In directory 'C:/vivado/LaboA1/fir_prj/solution1/csim/build'
-INFO: [APCC 202-3] Tmp directory is apcc_db
-INFO: [APCC 202-1] APCC is done.
-INFO: [HLS 200-112] Total CPU user time: 0 seconds. Total CPU system time: 0 seconds. Total elapsed time: 0.877 seconds; peak allocated memory: 7.246 MB.
