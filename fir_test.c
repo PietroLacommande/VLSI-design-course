@@ -47,11 +47,11 @@ ALL TIMES.
 #include <math.h>
 #include "fir.h"
 
-void readInputFile(char* filepath, int nBValues, float* output);
-void writeOutputFile(char* filepath, int nBValues, float* input);
-int compareArrays(float* ref, float* test, int length, float tolerance);
+static void readInputFile(const char* filepath, int nBValues, float* output);
+static void writeOutputFile(const char* filepath, int nBValues, float* input);
+static int compareArrays(const float* ref, const float* test, int length, float tolerance);
 
-void readInputFile(char* filepath, int nBValues, float* output){
+void readInputFile(const char* filepath, int nBValues, float* output){
     FILE *fin;
     float table[nBValues];
     fin = fopen(filepath, "r");
@@ -62,7 +62,7 @@ void readInputFile(char* filepath, int nBValues, float* output){
     fclose(fin);
 }
 
-void writeOutputFile(char* filepath, int nBValues, float* input){
+void writeOutputFile(const char* filepath, int nBValues, float* input){
     FILE *fout;
     fout = fopen(filepath, "w");
     for(int i = 0; i < nBValues; ++i){
@@ -72,7 +72,7 @@ void writeOutputFile(char* filepath, int nBValues, float* input){
 }
 
 
-int compareArrays(float* ref, float* test, int length, float tolerance){
+int compareArrays(const float* ref, const float* test, int length, float tolerance){
 	int mismatch=0;
 	float difference = 0;
 

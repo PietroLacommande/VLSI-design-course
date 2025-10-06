@@ -46,7 +46,9 @@ ALL TIMES.
 #ifndef FIR_H_
 #define FIR_H_
 
-int fir(float* y_in, float mu, float* ref, int nbTrain, float* output, int totalNumber);
+#define NULL_PTR NULL
 
+
+int fir(const float* y_in, float mu, const float* ref, int nbTrain, float* output, int totalNumber);
 
 #endif

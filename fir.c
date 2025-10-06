@@ -46,11 +46,16 @@ ALL TIMES.
 #include "fir.h"
 #include <stdio.h>
 
-#define NULL_PTR NULL
-
-
 //helper function for matrix multiplication
-static float dotProduct(float* row, float* column, int length){
+static float dotProduct(const float* row, const float* column, int length);
+
+//helper function to update weights
+static void weightUpdate(float* w,const float mu,const float error,const float* shift_reg, int length);
+
+//helper function for shifting the register
+static void shift_insertion(float* shift_reg, float new_value, int length);
+
+static float dotProduct(const float* row, const float* column, int length){
 	float sum=0;
 	for(int i=0; i<length; i++){
 		sum += row[i] * column[i];
@@ -58,14 +63,12 @@ static float dotProduct(float* row, float* column, int length){
 	return sum;
 }
 
-//helper function to update weights
-static void weightUpdate(float* w, float mu, float error, float* shift_reg, int length){
+static void weightUpdate(float* w,const float mu,const float error,const float* shift_reg, int length){
 	for(int i=0; i<length; i++){
 		w[i] += mu * error * shift_reg[i];
 	}
 }
 
-//helper function for shift register
 static void shift_insertion(float* shift_reg, float new_value, int length){
 	for(int i=length-1; i>0; --i){
 		shift_reg[i] = shift_reg[i-1];
@@ -73,7 +76,7 @@ static void shift_insertion(float* shift_reg, float new_value, int length){
 	shift_reg[0]= new_value;
 }
 
-int fir(float* y_in, float mu, float* ref, int nbTrain, float* output, int totalNumber){
+int fir(const float* y_in, float mu, const float* ref, int nbTrain, float* output, int totalNumber){
 	int result = -1;
 	int const taps = 5;
 
@@ -95,8 +98,6 @@ int fir(float* y_in, float mu, float* ref, int nbTrain, float* output, int total
 		for(int j = nbTrain; j<totalNumber; j++){
 			shift_insertion(shift_reg, y_in[j], taps);
 			output[j] = dotProduct(w,shift_reg,taps);
-			//error[j] = ref[j] - output[j];
-
 		}
 
 		result = 0; //success
