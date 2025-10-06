@@ -78,7 +78,7 @@ AUTOCC := cmd //c apcc.bat
 
 $(ObjDir)/fir_test.o: ../../../../fir_test.c $(ObjDir)/.dir
 	$(Echo) "   Compiling(apcc) ../../../../fir_test.c in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(AUTOCC) -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) $< -o $@ ; \
+	$(Verb)  $(AUTOCC) -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
 -include $(ObjDir)/fir_test.d
 

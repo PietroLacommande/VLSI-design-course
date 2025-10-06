@@ -3,11 +3,11 @@
 	<Message severity="INFO" prefix="[SIM 211-2]" key="SIM_2_1569" tag="" content="*************** CSIM start ***************" resolution=""/>
 	<Message severity="INFO" prefix="[SIM 211-4]" key="SIM_4_1577" tag="" content="CSIM will launch GCC as the compiler." resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1427" tag="" content="Running &apos;C:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/apcc.exe&apos;" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;Pietr&apos; on host &apos;desktop-ca0nhpr&apos; (Windows NT_amd64 version 6.2) on Fri Oct 03 22:18:22 -0400 2025" resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1428" tag="" content="For user &apos;Pietr&apos; on host &apos;desktop-ca0nhpr&apos; (Windows NT_amd64 version 6.2) on Sun Oct 05 23:02:24 -0400 2025" resolution=""/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1430" tag="" content="In directory &apos;C:/vivado/LaboA1/fir_prj/solution1/csim/build&apos;" resolution=""/>
 	<Message severity="INFO" prefix="[APCC 202-3]" key="APCC_3_1610" tag="" content="Tmp directory is apcc_db" resolution=""/>
 	<Message severity="INFO" prefix="[APCC 202-1]" key="APCC_1_1611" tag="" content="APCC is done." resolution=""/>
-	<Message severity="ERROR" prefix="[SIM 211-100]" key="SIM_100_1591" tag="" content="CSim failed with errors." resolution=""/>
+	<Message severity="ERROR" prefix="[SIM 211-100]" key="SIM_100_1590" tag="" content="&apos;csim_design&apos; failed: nonzero return value." resolution=""/>
 	<Message severity="INFO" prefix="[SIM 211-3]" key="SIM_3_1588" tag="" content="*************** CSIM finish ***************" resolution=""/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 4.687 seconds; current allocated memory: 0.336 MB." resolution=""/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="RUNTIME" content="Finished Command csim_design CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.414 seconds; current allocated memory: 0.305 MB." resolution=""/>
 </Messages>

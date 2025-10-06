@@ -58,12 +58,14 @@ static float dotProduct(float* row, float* column, int length){
 	return sum;
 }
 
+//helper function to update weights
 static void weightUpdate(float* w, float mu, float error, float* shift_reg, int length){
 	for(int i=0; i<length; i++){
 		w[i] += mu * error * shift_reg[i];
 	}
 }
 
+//helper function for shift register
 static void shift_insertion(float* shift_reg, float new_value, int length){
 	for(int i=length-1; i>0; --i){
 		shift_reg[i] = shift_reg[i-1];
@@ -79,9 +81,9 @@ int fir(float* y_in, float mu, float* ref, int nbTrain, float* output, int total
 	if(y_in != NULL_PTR && ref != NULL_PTR && output != NULL_PTR){
 		float w[taps] = {0};
 		float shift_reg[taps]= {0};
-		float error[totalNumber];
+		float error[nbTrain];
 
-
+		//least mean square algo
 		for(int i=0; i<nbTrain; i++){
 			shift_insertion(shift_reg, y_in[i], taps);
 			output[i] = dotProduct(w,shift_reg,taps);
@@ -93,10 +95,9 @@ int fir(float* y_in, float mu, float* ref, int nbTrain, float* output, int total
 		for(int j = nbTrain; j<totalNumber; j++){
 			shift_insertion(shift_reg, y_in[j], taps);
 			output[j] = dotProduct(w,shift_reg,taps);
-			error[j] = ref[j] - output[j];
+			//error[j] = ref[j] - output[j];
 
 		}
-
 
 		result = 0; //success
 	}

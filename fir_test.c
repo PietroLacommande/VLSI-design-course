@@ -48,6 +48,7 @@ ALL TIMES.
 #include "fir.h"
 
 void readInputFile(char* filepath, int nBValues, float* output);
+void writeOutputFile(char* filepath, int nBValues, float* input);
 
 void readInputFile(char* filepath, int nBValues, float* output){
     FILE *fin;
@@ -60,43 +61,31 @@ void readInputFile(char* filepath, int nBValues, float* output){
     fclose(fin);
 }
 
+void writeOutputFile(char* filepath, int nBValues, float* input){
+    FILE *fout;
+    fout = fopen(filepath, "w");
+    for(int i = 0; i < nBValues; ++i){
+        fprintf(fout, "%.6f\n", input[i]);
+    }
+    fclose(fout);
+}
+
 int main () {
-  const int    SAMPLES=2000;
+  const int SAMPLES=2000;
   float yn[SAMPLES] = {0};
   float referenceValues[SAMPLES] = {0};
   float estimatedOuput[SAMPLES] = {0};
+  float output[SAMPLES]= {0};
+
+  readInputFile("C:/vivado/LaboA1/yn.txt", SAMPLES, yn);
+  readInputFile("C:/vivado/LaboA1/inpest.txt", SAMPLES, estimatedOuput);
+  readInputFile("C:/vivado/LaboA1/inp.txt", 200, referenceValues);
+
+  fir(yn, 0.52, referenceValues, 200, output, SAMPLES);
+  writeOutputFile("out.dat", SAMPLES, output);
+  writeOutputFile("out.gold.dat", SAMPLES, estimatedOuput);
 
 
-  readInputFile("../yn.txt", SAMPLES, yn);
-  readInputFile("../inpest.txt", SAMPLES, yn);
-  readInputFile("../inp.txt", SAMPLES, yn);
-
-  data_t signal, output;
-  coef_t taps[N] = {0,-10,-9,23,56,63,56,23,-9,-10,0,};
-
-  int i, ramp_up;
-  signal = 0;
-  ramp_up = 1;
-  
-  fp=fopen("out.dat","w");
-  for (i=0;i<=SAMPLES;i++) {
-  	if (ramp_up == 1) 
-  		signal = signal + 1;
-  	else 
-  		signal = signal - 1;
-
-	// Execute the function with latest input
-  	fir(yn, 0.52, referenceValues, 200, output, SAMPLES);
-    
-    if ((ramp_up == 1) && (signal >= 75))
-    	ramp_up = 0;
-    else if ((ramp_up == 0) && (signal <= -75))
-    	ramp_up = 1;
-    	
-	// Save the results.
-    fprintf(fp,"%i %d %d\n",i,signal,output);
-  }
-  fclose(fp);
   
   printf ("Comparing against output data \n");
   if (system("diff -w out.dat out.gold.dat")) {
