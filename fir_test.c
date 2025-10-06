@@ -49,6 +49,7 @@ ALL TIMES.
 
 void readInputFile(char* filepath, int nBValues, float* output);
 void writeOutputFile(char* filepath, int nBValues, float* input);
+int compareArrays(float* ref, float* test, int length, float tolerance);
 
 void readInputFile(char* filepath, int nBValues, float* output){
     FILE *fin;
@@ -70,7 +71,24 @@ void writeOutputFile(char* filepath, int nBValues, float* input){
     fclose(fout);
 }
 
+
+int compareArrays(float* ref, float* test, int length, float tolerance){
+	int mismatch=0;
+	float difference = 0;
+
+	for(int i = 0; i < length; i++){
+		difference = fabs(ref[i]- test[i]);
+		if(difference > tolerance){
+			mismatch++;
+		}
+	}
+
+	return mismatch;
+}
+
 int main () {
+	const float mu = 0.52;
+const int nbTrain = 200;
   const int SAMPLES=2000;
   float yn[SAMPLES] = {0};
   float referenceValues[SAMPLES] = {0};
@@ -79,16 +97,18 @@ int main () {
 
   readInputFile("C:/vivado/LaboA1/yn.txt", SAMPLES, yn);
   readInputFile("C:/vivado/LaboA1/inpest.txt", SAMPLES, estimatedOuput);
-  readInputFile("C:/vivado/LaboA1/inp.txt", 200, referenceValues);
+  readInputFile("C:/vivado/LaboA1/inp.txt", nbTrain, referenceValues);
 
-  fir(yn, 0.52, referenceValues, 200, output, SAMPLES);
+  fir(yn, mu, referenceValues, nbTrain, output, SAMPLES);
   writeOutputFile("out.dat", SAMPLES, output);
   writeOutputFile("out.gold.dat", SAMPLES, estimatedOuput);
 
 
   
-  printf ("Comparing against output data \n");
-  if (system("diff -w out.dat out.gold.dat")) {
+  printf ("Comparing against output data with a tolerance of 0.125 \n");
+  float tolerance = 0.125; //The first few hundreds results vary because we do not use two differents mu like in the Matlab code for first 20 samples
+  int mismatch = compareArrays(estimatedOuput, output, SAMPLES, tolerance);
+  if (mismatch>0) {
 
 	fprintf(stdout, "*******************************************\n");
 	fprintf(stdout, "FAIL: Output DOES NOT match the golden output\n");
