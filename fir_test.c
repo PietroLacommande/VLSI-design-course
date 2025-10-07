@@ -47,10 +47,14 @@ ALL TIMES.
 #include <math.h>
 #include "fir.h"
 
+#define TOTAL_NUMBER 2000
+#define NB_TRAIN 200
+
 static void readInputFile(const char* filepath, int nBValues, float* output);
 static void writeOutputFile(const char* filepath, int nBValues, float* input);
 static int compareArrays(const float* ref, const float* test, int length, float tolerance);
 
+//lecture d'un fichier
 void readInputFile(const char* filepath, int nBValues, float* output){
     FILE *fin;
     float table[nBValues];
@@ -62,6 +66,7 @@ void readInputFile(const char* filepath, int nBValues, float* output){
     fclose(fin);
 }
 
+//eccriture dans un fichier
 void writeOutputFile(const char* filepath, int nBValues, float* input){
     FILE *fout;
     fout = fopen(filepath, "w");
@@ -71,7 +76,7 @@ void writeOutputFile(const char* filepath, int nBValues, float* input){
     fclose(fout);
 }
 
-
+//compare deux tableaux avec une tolerance. Retourne le nombre de valeur qui ne respecte pas la tolerance
 int compareArrays(const float* ref, const float* test, int length, float tolerance){
 	int mismatch=0;
 	float difference = 0;
@@ -87,7 +92,9 @@ int compareArrays(const float* ref, const float* test, int length, float toleran
 }
 
 int main () {
-  const float mu = 0.52;
+  const float mu1 = 0.52;
+  const float mu2 = 0.22;
+
   float yn[TOTAL_NUMBER] = {0};
   float referenceValues[TOTAL_NUMBER] = {0};
   float estimatedOuput[TOTAL_NUMBER] = {0};
@@ -97,14 +104,14 @@ int main () {
   readInputFile("C:/vivado/LaboA1/inpest.txt", TOTAL_NUMBER, estimatedOuput);
   readInputFile("C:/vivado/LaboA1/inp.txt", NB_TRAIN, referenceValues);
 
-  fir(yn, mu, referenceValues, output);
+  fir(yn, mu1, mu2, referenceValues, output);
   writeOutputFile("out.dat", TOTAL_NUMBER, output);
   writeOutputFile("out.gold.dat", TOTAL_NUMBER, estimatedOuput);
 
 
   
-  printf ("Comparing against output data with a tolerance of 0.125 \n");
-  float tolerance = 0.125; //The first few hundreds results vary because we do not use two differents mu like in the Matlab code for first 20 TOTAL_NUMBER
+  printf ("Comparing against output data with a tolerance of 0.05 \n");
+  float tolerance = 0.05;
   int mismatch = compareArrays(estimatedOuput, output, TOTAL_NUMBER, tolerance);
   if (mismatch>0) {
 

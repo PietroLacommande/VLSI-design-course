@@ -49,6 +49,6 @@ ALL TIMES.
 #define NULL_PTR NULL
 
 
-int fir(const float* y_in, float mu, const float* ref, float* output);
+int fir(const float* y_in, float mu1, float mu2, const float* ref, float* output);
 
 #endif

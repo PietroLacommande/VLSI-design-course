@@ -47,7 +47,7 @@ ALL TIMES.
 #include <stdio.h>
 
 
-int fir(const float* y_in, float mu, const float* ref, float* output){
+int fir(const float* y_in, float mu1, float mu2, const float* ref, float* output){
 	int result = -1;
 	const int taps = 5;
 	const int nbTrain = 200;
@@ -59,6 +59,7 @@ int fir(const float* y_in, float mu, const float* ref, float* output){
 		float shift_reg[taps]= {0};
 		float error = 0;;
 		float sum=0;
+		float mu=0;
 
 		//least mean square algo
 		leastMeanSquare: for(int i=0; i<nbTrain; i++){
@@ -77,6 +78,13 @@ int fir(const float* y_in, float mu, const float* ref, float* output){
 			output[i] = sum;
 
 			error = ref[i] - output[i];
+
+			if(i < 20){
+				mu = mu1;
+			}
+			else if(i>=20){
+				mu = mu2;
+			}
 
 			weightUpdate: for(int j=0; j<taps; j++){
 						w[j] += mu * error * shift_reg[j];
