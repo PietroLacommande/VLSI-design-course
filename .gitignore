@@ -3,4 +3,9 @@
 .settings/
 Debug/
 solution1/
+fir_prj/.cproject
+fir_prj/.project
+fir_prj/.vitis_hls_log_all.xml
+fir_prj/hls.app
+vitis_hls.log
 
