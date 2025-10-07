@@ -79,10 +79,10 @@ int fir(const float* y_in, float mu1, float mu2, const float* ref, float* output
 
 			error = ref[i] - output[i];
 
-			if(i < 20){
+			if(i < 19){
 				mu = mu1;
 			}
-			else if(i>=20){
+			else if(i>=19){
 				mu = mu2;
 			}
 
