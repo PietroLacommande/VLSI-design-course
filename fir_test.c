@@ -87,27 +87,25 @@ int compareArrays(const float* ref, const float* test, int length, float toleran
 }
 
 int main () {
-	const float mu = 0.52;
-const int nbTrain = 200;
-  const int SAMPLES=2000;
-  float yn[SAMPLES] = {0};
-  float referenceValues[SAMPLES] = {0};
-  float estimatedOuput[SAMPLES] = {0};
-  float output[SAMPLES]= {0};
+  const float mu = 0.52;
+  float yn[TOTAL_NUMBER] = {0};
+  float referenceValues[TOTAL_NUMBER] = {0};
+  float estimatedOuput[TOTAL_NUMBER] = {0};
+  float output[TOTAL_NUMBER]= {0};
 
-  readInputFile("C:/vivado/LaboA1/yn.txt", SAMPLES, yn);
-  readInputFile("C:/vivado/LaboA1/inpest.txt", SAMPLES, estimatedOuput);
-  readInputFile("C:/vivado/LaboA1/inp.txt", nbTrain, referenceValues);
+  readInputFile("C:/vivado/LaboA1/yn.txt", TOTAL_NUMBER, yn);
+  readInputFile("C:/vivado/LaboA1/inpest.txt", TOTAL_NUMBER, estimatedOuput);
+  readInputFile("C:/vivado/LaboA1/inp.txt", NB_TRAIN, referenceValues);
 
-  fir(yn, mu, referenceValues, nbTrain, output, SAMPLES);
-  writeOutputFile("out.dat", SAMPLES, output);
-  writeOutputFile("out.gold.dat", SAMPLES, estimatedOuput);
+  fir(yn, mu, referenceValues, output);
+  writeOutputFile("out.dat", TOTAL_NUMBER, output);
+  writeOutputFile("out.gold.dat", TOTAL_NUMBER, estimatedOuput);
 
 
   
   printf ("Comparing against output data with a tolerance of 0.125 \n");
-  float tolerance = 0.125; //The first few hundreds results vary because we do not use two differents mu like in the Matlab code for first 20 samples
-  int mismatch = compareArrays(estimatedOuput, output, SAMPLES, tolerance);
+  float tolerance = 0.125; //The first few hundreds results vary because we do not use two differents mu like in the Matlab code for first 20 TOTAL_NUMBER
+  int mismatch = compareArrays(estimatedOuput, output, TOTAL_NUMBER, tolerance);
   if (mismatch>0) {
 
 	fprintf(stdout, "*******************************************\n");

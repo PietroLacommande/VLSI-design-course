@@ -46,58 +46,55 @@ ALL TIMES.
 #include "fir.h"
 #include <stdio.h>
 
-//helper function for matrix multiplication
-static float dotProduct(const float* row, const float* column, int length);
 
-//helper function to update weights
-static void weightUpdate(float* w,const float mu,const float error,const float* shift_reg, int length);
-
-//helper function for shifting the register
-static void shift_insertion(float* shift_reg, float new_value, int length);
-
-static float dotProduct(const float* row, const float* column, int length){
-	float sum=0;
-	for(int i=0; i<length; i++){
-		sum += row[i] * column[i];
-	}
-	return sum;
-}
-
-static void weightUpdate(float* w,const float mu,const float error,const float* shift_reg, int length){
-	for(int i=0; i<length; i++){
-		w[i] += mu * error * shift_reg[i];
-	}
-}
-
-static void shift_insertion(float* shift_reg, float new_value, int length){
-	for(int i=length-1; i>0; --i){
-		shift_reg[i] = shift_reg[i-1];
-	}
-	shift_reg[0]= new_value;
-}
-
-int fir(const float* y_in, float mu, const float* ref, int nbTrain, float* output, int totalNumber){
+int fir(const float* y_in, float mu, const float* ref, float* output){
 	int result = -1;
-	int const taps = 5;
+	const int taps = 5;
+	const int nbTrain = 200;
+	const int totalNumber = 2000;
 
 	//Making sure the addresses passed are valid
 	if(y_in != NULL_PTR && ref != NULL_PTR && output != NULL_PTR){
 		float w[taps] = {0};
 		float shift_reg[taps]= {0};
-		float error[nbTrain];
+		float error = 0;;
+		float sum=0;
 
 		//least mean square algo
-		for(int i=0; i<nbTrain; i++){
-			shift_insertion(shift_reg, y_in[i], taps);
-			output[i] = dotProduct(w,shift_reg,taps);
-			error[i] = ref[i] - output[i];
-			weightUpdate(w, mu, error[i], shift_reg, taps);
+		leastMeanSquare: for(int i=0; i<nbTrain; i++){
+
+			shiftInsertion1: for(int s=taps-1; s>0; --s){
+				shift_reg[s] = shift_reg[s-1];
+			}
+			shift_reg[0]= y_in[i];
+
+			sum =0;
+
+			dotProduct1: for(int k=0; k<taps; k++){
+					sum += w[k] * shift_reg[k];
+			}
+
+			output[i] = sum;
+
+			error = ref[i] - output[i];
+
+			weightUpdate: for(int j=0; j<taps; j++){
+						w[j] += mu * error * shift_reg[j];
+			}
 		}
 
 		//equalization
-		for(int j = nbTrain; j<totalNumber; j++){
-			shift_insertion(shift_reg, y_in[j], taps);
-			output[j] = dotProduct(w,shift_reg,taps);
+		equalization: for(int j = nbTrain; j<totalNumber; j++){
+			shiftInsertion2: for(int s=taps-1; s>0; --s){
+				shift_reg[s] = shift_reg[s-1];
+			}
+			shift_reg[0]= y_in[j];
+			sum = 0;
+
+			dotProduct2: for(int k=0; k<taps; k++){
+							sum += w[k] * shift_reg[k];
+			}
+			output[j] = sum;
 		}
 
 		result = 0; //success
