@@ -110,8 +110,8 @@ int main () {
 
 
   
-  printf ("Comparing against output data with a tolerance of 0.05 \n");
-  float tolerance = 0.05;
+  printf ("Comparing against output data with a tolerance of 0.01 \n");
+  float tolerance = 0.01;
   int mismatch = compareArrays(estimatedOuput, output, TOTAL_NUMBER, tolerance);
   if (mismatch>0) {
 
